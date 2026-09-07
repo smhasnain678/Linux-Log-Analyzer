@@ -8,4 +8,4 @@ echo "Hostname : $(hostname)"
 echo "Date     : $(date)"
 
 
-echo "====================="
+echo "==========================="
