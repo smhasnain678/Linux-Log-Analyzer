@@ -1,0 +1,10 @@
+Sep 08 10:01:15 server sshd[1234]: Accepted password for hasnain from 192.168.1.10 port 22 ssh2
+Sep 08 10:05:22 server sshd[1235]: Failed password for root from 192.168.1.20 port 22 ssh2
+Sep 08 10:06:30 server sshd[1236]: Failed password for admin from 192.168.1.20 port 22 ssh2
+Sep 08 10:08:45 server sshd[1237]: Failed password for root from 192.168.1.30 port 22 ssh2
+Sep 08 10:10:12 server sshd[1238]: Accepted password for user1 from 192.168.1.15 port 22 ssh2
+Sep 08 10:12:20 server application[2001]: ERROR Database connection failed
+Sep 08 10:14:35 server application[2002]: WARNING High memory usage detected
+Sep 08 10:16:40 server sshd[1239]: Failed password for root from 192.168.1.20 port 22 ssh2
+Sep 08 10:18:10 server application[2003]: ERROR Service unavailable
+Sep 08 10:20:55 server application[2004]: WARNING Disk space running low
