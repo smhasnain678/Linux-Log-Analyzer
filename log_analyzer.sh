@@ -33,8 +33,6 @@ echo "Total Log Entries: $TOTAL_LOGS"
 FAILED_LOGIN=$(grep -c "Failed password" "$LOG_FILE")
 echo "Failed Login Attempts: $FAILED_LOGIN"
 
-
-# COUNT of same IPs
 echo "======================================================"
 
 
