@@ -29,6 +29,10 @@ TOTAL_LOGS=$(wc -l < "$LOG_FILE")
 
 echo "Total Log Entries: $TOTAL_LOGS"
 
+# Failed Login Attempts
+FAILED_LOGIN=$(grep -c "Failed password" "$LOG_FILE")
+echo "Failed Login Attempts: $FAILED_LOGIN"
+
 echo "======================================================"
 
 
