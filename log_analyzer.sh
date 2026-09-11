@@ -34,6 +34,7 @@ FAILED_LOGIN=$(grep -c "Failed password" "$LOG_FILE")
 echo "Failed Login Attempts: $FAILED_LOGIN"
 
 # Failed Login Attempts by IP
+echo "Failed Login Atempts by IP:"
 
 echo "======================================================"
 
