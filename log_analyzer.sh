@@ -35,6 +35,7 @@ echo "Failed Login Attempts: $FAILED_LOGIN"
 
 # Failed Login Attempts by IP
 echo "Failed Login Atempts by IP:"
+awk '/Failed password/ {print $11}' "$LOG_FILE" | sort | uniq -c | sort -nr
 
 echo "======================================================"
 
