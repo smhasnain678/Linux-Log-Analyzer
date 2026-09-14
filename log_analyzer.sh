@@ -37,6 +37,8 @@ echo "Failed Login Attempts: $FAILED_LOGIN"
 echo "Failed Login Atempts by IP:"
 awk '/Failed password/ {print $11}' "$LOG_FILE" | sort | uniq -c | sort -nr
 
-echo "======================================================"
+# Successful Login Attempts
+SUCCESSFUL_LOGINS=$(grep -c "Accepted password" "$LOG_FILE")
+echo "Successful Login Attempts: $SUCCESSFUL_LOGINS"
 
-
+echo "======================================================="
