@@ -43,7 +43,7 @@ echo "Successful Login Attempts: $SUCCESSFUL_LOGINS"
 
 # Suspicious IP Alert
 echo "Suspicious IP Addresses:"
-awk '/Failed password/ {print $11}' "$LOG_FILE" | sort | uniq -c | sort -nr | while read COUNT IP
+"$LOG_FILE" awk '/Failed password/ {print $11}' | sort | uniq -c | sort -nr | while read COUNT IP
 do
 	if [ "$COUNT" -ge 2 ]; then
 		echo "WARNING: $IP has $COUNT failed login attempts!"
