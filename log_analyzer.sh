@@ -50,4 +50,11 @@ do
 	fi
 done
 
+# Error and Warning Analysis
+ERROR_COUNT=$(grep -c "ERROR" "$LOG_FILE")
+WARNING_COUNT=$(grep -c "WARNING" "$LOG_FILE")
+
+echo "Application Errors: $ERROR_COUNT"
+echo "Application Warnings: $WARNING_COUNT"
+
 echo "======================================================="
