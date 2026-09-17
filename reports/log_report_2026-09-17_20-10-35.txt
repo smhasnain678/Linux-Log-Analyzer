@@ -1,0 +1,23 @@
+===============================
+ LINUX LOG ANALYZER AND SECURITY MONITOR
+===============================
+Hostname : muhammad-hasnain-VirtualBox
+Date     : Thu Sep 17 08:10:35 PM PKT 2026
+======================================================
+Analyzing Log Files: logs/sample_auth.log
+Log file found successfully.
+Total Log Entries: 10
+Failed Login Attempts: 4
+Failed Login Atempts by IP:
+      3 192.168.1.20
+      1 192.168.1.30
+Successful Login Attempts: 2
+Suspicious IP Addresses:
+WARNING: 192.168.1.20 has 3 failed login attempts!
+Application Errors: 2
+Application Warnings: 2
+Log Level Summary
+INFO Messages: 0
+ERROR Messages: 2
+WARNING Messages: 2
+=======================================================
