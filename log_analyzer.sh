@@ -63,4 +63,11 @@ WARNING_COUNT=$(grep -c "WARNING" "$LOG_FILE")
 echo "Application Errors: $ERROR_COUNT"
 echo "Application Warnings: $WARNING_COUNT"
 
+echo "Log Level Summary"
+INFO_COUNT=$(grep -c "INFO" "$LOG_INFO")
+ERROR_COUNT=$(grep -c "ERROR" "$LOG_FILE")
+WARNING_COUNT=$(grep -c "WARNING" "$LOG_FILE")
+
+echo "INFO Messages: $INFO_COUNT"
+
 echo "======================================================="
