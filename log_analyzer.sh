@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Report File
+REPORT_FILE="reports/log_report_$(date +%Y-%m-%d_%H-%M-%S).txt"
+
+# Save output to terminal and report file
+exec > >(tee -a "$REPORT_FILE") 2>&1
+
 echo "==============================="
 echo " LINUX LOG ANALYZER AND SECURITY MONITOR"
 echo "==============================="
