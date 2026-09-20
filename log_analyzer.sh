@@ -72,4 +72,14 @@ echo "INFO Messages: $INFO_COUNT"
 echo "ERROR Messages: $ERROR_COUNT"
 echo "WARNING Messages: $WARNING_COUNT"
 
+# Error Messages
+echo "Error Messages:"
+grep "ERROR" "$LOG_FILE"
+
+echo "======================================================="
+
+# Warning Messages
+echo "Warning Messages:"
+grep "WARNING" "$LOG_FILE"
+
 echo "======================================================="
