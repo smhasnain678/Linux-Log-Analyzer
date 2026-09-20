@@ -86,4 +86,9 @@ grep "WARNING" "$LOG_FILE"
 echo "Recent Log Activity:"
 tail -n 5 "$LOG_FILE"
 
+# Most Common Log Messages
+echo "Most Common Log Messages:"
+
+awk '{for (i=5; i<=NF; i++) printf "%s ", $i; print ""}' "$LOG_FILE" | sort | uniq -c | sort -nr | head -5
+
 echo "======================================================="
