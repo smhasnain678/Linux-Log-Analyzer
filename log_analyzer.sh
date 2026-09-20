@@ -82,4 +82,8 @@ echo "======================================================="
 echo "Warning Messages:"
 grep "WARNING" "$LOG_FILE"
 
+# Recent Log Activity
+echo "Recent Log Activity:"
+tail -n 5 "$LOG_FILE"
+
 echo "======================================================="
