@@ -1,0 +1,43 @@
+===============================
+ LINUX LOG ANALYZER AND SECURITY MONITOR
+===============================
+Hostname : muhammad-hasnain-VirtualBox
+Date     : Sun Sep 20 10:47:56 PM PKT 2026
+======================================================
+Analyzing Log Files: logs/sample_auth.log
+Log file found successfully.
+Total Log Entries: 10
+Failed Login Attempts: 4
+Failed Login Atempts by IP:
+      3 192.168.1.20
+      1 192.168.1.30
+Successful Login Attempts: 2
+Suspicious IP Addresses:
+WARNING: 192.168.1.20 has 3 failed login attempts!
+Application Errors: 2
+Application Warnings: 2
+Log Level Summary
+INFO Messages: 0
+ERROR Messages: 2
+WARNING Messages: 2
+Error Messages:
+Sep 08 10:12:20 server application[2001]: ERROR Database connection failed
+Sep 08 10:18:10 server application[2003]: ERROR Service unavailable
+=======================================================
+Warning Messages:
+Sep 08 10:14:35 server application[2002]: WARNING High memory usage detected
+Sep 08 10:20:55 server application[2004]: WARNING Disk space running low
+Recent Log Activity:
+Sep 08 10:12:20 server application[2001]: ERROR Database connection failed
+Sep 08 10:14:35 server application[2002]: WARNING High memory usage detected
+Sep 08 10:16:40 server sshd[1239]: Failed password for root from 192.168.1.20 port 22 ssh2
+Sep 08 10:18:10 server application[2003]: ERROR Service unavailable
+Sep 08 10:20:55 server application[2004]: WARNING Disk space running low
+Most Common Log Messages:
+awk: cannot open " sort" (No such file or directory)
+      1 sshd[1239]: Failed password for root from 192.168.1.20 port 22 ssh2 
+      1 sshd[1238]: Accepted password for user1 from 192.168.1.15 port 22 ssh2 
+      1 sshd[1237]: Failed password for root from 192.168.1.30 port 22 ssh2 
+      1 sshd[1236]: Failed password for admin from 192.168.1.20 port 22 ssh2 
+      1 sshd[1235]: Failed password for root from 192.168.1.20 port 22 ssh2 
+=======================================================
