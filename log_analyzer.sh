@@ -90,6 +90,10 @@ grep "WARNING" "$LOG_FILE"
 echo "Recent Log Activity:"
 tail -n 5 "$LOG_FILE"
 
+# Latest Log Entry
+echo "Latest Log Entry:"
+tail -n 1 "$LOG_FILE"
+
 # Most Common Log Messages
 echo "Most Common Log Messages:"
 
