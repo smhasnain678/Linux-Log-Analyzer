@@ -47,6 +47,10 @@ awk '/Failed password/ {print $11}' "$LOG_FILE" | sort | uniq -c | sort -nr
 echo "Failed Login Attempts by User:"
 awk '/Failed password/ {print $9}' "$LOG_FILE" | sort | uniq -c | sort -nr
 
+# Failed Login Attempts by Hour
+echo "Failed Login Attempts by Hour:"
+awk '/Failed password/ {print $3}' "$LOG_FILE" | sort | uniq -c | sort -nr
+
 # Successful Login Attempts
 SUCCESSFUL_LOGINS=$(grep -c "Accepted password" "$LOG_FILE")
 echo "Successful Login Attempts: $SUCCESSFUL_LOGINS"
