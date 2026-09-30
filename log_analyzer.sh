@@ -55,6 +55,10 @@ awk '/Failed password/ {print $3}' "$LOG_FILE" | sort | uniq -c | sort -nr
 SUCCESSFUL_LOGINS=$(grep -c "Accepted password" "$LOG_FILE")
 echo "Successful Login Attempts: $SUCCESSFUL_LOGINS"
 
+# Suspicious user alert
+echo "Suspicious Users:"
+awk '/Failed password/ {print $9}' "$LOG_FILE" | sort
+
 # Suspicious IP Alert
 echo "Suspicious IP Addresses:"
 awk '/Failed password/ {print $11}' "$LOG_FILE" | sort | uniq -c | sort -nr | while read COUNT IP
