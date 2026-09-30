@@ -57,7 +57,12 @@ echo "Successful Login Attempts: $SUCCESSFUL_LOGINS"
 
 # Suspicious user alert
 echo "Suspicious Users:"
-awk '/Failed password/ {print $9}' "$LOG_FILE" | sort
+awk '/Failed password/ {print $9}' "$LOG_FILE" | sort | uniq -c | sort -nr | while read COUNT USER
+do
+	if [ "$COUNT" -ge 2 ]; then
+		echo "WARNING: User $USER has $COUNT failed login attempts!"
+	fi
+done
 
 # Suspicious IP Alert
 echo "Suspicious IP Addresses:"
