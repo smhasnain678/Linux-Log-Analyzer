@@ -18,7 +18,7 @@ echo "======================================================"
 
 # Log Files
 #LOG_FILE="/var/log/auth.log"
-LOG_FILE="logs/sample_auth.log"
+LOG_FILE="${1:-logs/sample_auth.log}"
 
 echo "Analyzing Log Files: $LOG_FILE"
 
