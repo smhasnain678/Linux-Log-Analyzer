@@ -16,6 +16,20 @@ echo "Date     : $(date)"
 
 echo "======================================================"
 
+# Help option
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+	echo "Linux Log Analyzer and Security Monitor"
+	echo
+	echo "Usage:"
+	echo "  ./log_analyzer.sh [LOG_FILE]"
+	echo 
+	echo "Examples:"
+	echo "  ./log_analyzer.sh"
+	echo "  ./log_analyzer.sh logs/sample_auth.log"
+	echo "  ./log_analyzer.sh /var/log/auth.log"
+	exit 0
+fi
+
 # Log Files
 #LOG_FILE="/var/log/auth.log"
 LOG_FILE="${1:-logs/sample_auth.log}"
