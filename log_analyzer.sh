@@ -27,6 +27,7 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
 	echo "  ./log_analyzer.sh"
 	echo "  ./log_analyzer.sh logs/sample_auth.log"
 	echo "  ./log_analyzer.sh /var/log/auth.log"
+	echo "  ./log_analyzer.sh logs/sample_auth.log --threshold 5"
 	exit 0
 fi
 
