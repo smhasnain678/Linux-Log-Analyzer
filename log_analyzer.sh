@@ -31,6 +31,14 @@ if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
 	exit 0
 fi
 
+# Default suspicious login threshold
+THRESHOLD=2
+
+# check for custom threshold
+if [ "$2" = "--threshold" ]; then
+	THRESHOLD="$3"
+fi
+
 # Log Files
 #LOG_FILE="/var/log/auth.log"
 LOG_FILE="${1:-logs/sample_auth.log}"
@@ -74,7 +82,7 @@ echo "Successful Login Attempts: $SUCCESSFUL_LOGINS"
 echo "Suspicious Users:"
 awk '/Failed password/ {print $9}' "$LOG_FILE" | sort | uniq -c | sort -nr | while read COUNT USER
 do
-	if [ "$COUNT" -ge 2 ]; then
+	if [ "$COUNT" -ge "$THRESHOLD" ]; then
 		echo "WARNING: User $USER has $COUNT failed login attempts!"
 	fi
 done
@@ -83,7 +91,7 @@ done
 echo "Suspicious IP Addresses:"
 awk '/Failed password/ {print $11}' "$LOG_FILE" | sort | uniq -c | sort -nr | while read COUNT IP
 do
-	if [ "$COUNT" -ge 2 ]; then
+	if [ "$COUNT" -ge "$THRESHOLD" ]; then
 		echo "WARNING: $IP has $COUNT failed login attempts!"
 	fi
 done
