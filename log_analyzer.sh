@@ -36,7 +36,16 @@ THRESHOLD=2
 
 # check for custom threshold
 if [ "$2" = "--threshold" ]; then
+	if [ -z "$3" ]; then
+		echo "ERROR: Threshold value is required"
+		exit 1
+	fi
+	if ! [[ "$3" =~ ^[0-9]+$ ]] || [[ "$3" -lt 1 ]]; then
+		echo "ERROR: Threshold must be positive integer"
+		exit 1
+	fi
 	THRESHOLD="$3"
+	
 fi
 
 # Log Files
