@@ -50,6 +50,22 @@ while [ "$#" -gt 0 ]; do
 			THRESHOLD="$2"
 			shift 2
 			;;
+		-*)
+			echo "ERROR: Unknown option: $1"
+			echo "Use --help to see available options."
+			exit 1
+			;;
+		*)
+			if [ "$LOG_FILE" != "logs/sample_auth.log" ]; then
+				echo "ERROR: Only one log file can be specified."
+				exit 1
+			fi
+
+			LOG_FILE="$1"
+			shift
+			;;
+	esac
+done
 # Log Files
 #LOG_FILE="/var/log/auth.log"
 #LOG_FILE="${1:-logs/sample_auth.log}"
