@@ -16,41 +16,43 @@ echo "Date     : $(date)"
 
 echo "======================================================"
 
-# Help option
-if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
-	echo "Linux Log Analyzer and Security Monitor"
-	echo
-	echo "Usage:"
-	echo "  ./log_analyzer.sh [LOG_FILE]"
-	echo 
-	echo "Examples:"
-	echo "  ./log_analyzer.sh"
-	echo "  ./log_analyzer.sh logs/sample_auth.log"
-	echo "  ./log_analyzer.sh /var/log/auth.log"
-	echo "  ./log_analyzer.sh logs/sample_auth.log --threshold 5"
-	exit 0
-fi
-
-# Default suspicious login threshold
+# Help option	
 THRESHOLD=2
+LOG_FILE="logs/sample_auth.log"
 
-# check for custom threshold
-if [ "$2" = "--threshold" ]; then
-	if [ -z "$3" ]; then
-		echo "ERROR: Threshold value is required"
-		exit 1
-	fi
-	if ! [[ "$3" =~ ^[0-9]+$ ]] || [[ "$3" -lt 1 ]]; then
-		echo "ERROR: Threshold must be positive integer"
-		exit 1
-	fi
-	THRESHOLD="$3"
-	
-fi
+# Argument parsing
+while [ "$#" -gt 0 ]; do
+	case "$1" in
+		--help|-h)
+			echo "Linux Log Analyzer and Security Monitor"
+			echo
+			echo "Usage:"
+			echo " ./log_analyzer.sh [LOG_FILE] [--threshold NUMBER]"
+			echo 
+			echo "Examples:"
+			echo " ./log_analyzer.sh"
+			echo " ./log_analyzer.sh logs/sample_auth.log"
+			echo " ./log_analyzer.sh logs/sample_auth.log --threshold 5"
+			echo " ./log_analyzer.sh --threshold 3 logs/sample_auth.log"
+			exit 0
+			;;
+		--threshold)
+			if [ "$#" -lt 2 ] || [ -z "$2" ]; then
+				echo "ERROR: Threshold value is required"
+				exit 1
+			fi
 
+			if ! [[ "$2" =~ ^[0-9]+$ ]] || [ "$2" -lt 1]; then
+				echo "ERROR: Threshold must be positive integer."
+				exit 1
+			fi
+
+			THRESHOLD="$2"
+			shift 2
+			;;
 # Log Files
 #LOG_FILE="/var/log/auth.log"
-LOG_FILE="${1:-logs/sample_auth.log}"
+#LOG_FILE="${1:-logs/sample_auth.log}"
 
 echo "Analyzing Log Files: $LOG_FILE"
 
