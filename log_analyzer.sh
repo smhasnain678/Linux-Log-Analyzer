@@ -19,6 +19,7 @@ echo "======================================================"
 # Help option	
 THRESHOLD=2
 LOG_FILE="logs/sample_auth.log"
+LOG_FILE_SET=0
 
 # Argument parsing
 while [ "$#" -gt 0 ]; do
@@ -42,7 +43,7 @@ while [ "$#" -gt 0 ]; do
 				exit 1
 			fi
 
-			if ! [[ "$2" =~ ^[0-9]+$ ]] || [ "$2" -lt 1]; then
+			if ! [[ "$2" =~ ^[0-9]+$ ]] || [ "$2" -lt 1 ]; then
 				echo "ERROR: Threshold must be positive integer."
 				exit 1
 			fi
@@ -56,12 +57,13 @@ while [ "$#" -gt 0 ]; do
 			exit 1
 			;;
 		*)
-			if [ "$LOG_FILE" != "logs/sample_auth.log" ]; then
+			if [ "$LOG_FILE_SET" != "logs/sample_auth.log" ]; then
 				echo "ERROR: Only one log file can be specified."
 				exit 1
 			fi
 
 			LOG_FILE="$1"
+			LOG_FILE_SET=1
 			shift
 			;;
 	esac
