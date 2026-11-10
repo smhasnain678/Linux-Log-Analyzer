@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Create report directory if it does not exit
+mkdir -p reports
+
 # Report File
 REPORT_FILE="reports/log_report_$(date +%Y-%m-%d_%H-%M-%S).txt"
 
