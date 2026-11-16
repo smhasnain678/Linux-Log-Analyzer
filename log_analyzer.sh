@@ -60,7 +60,7 @@ while [ "$#" -gt 0 ]; do
 			exit 1
 			;;
 		*)
-			if [ "$LOG_FILE_SET" != "logs/sample_auth.log" ]; then
+			if [ "$LOG_FILE_SET" -eq 1 ]; then
 				echo "ERROR: Only one log file can be specified."
 				exit 1
 			fi
