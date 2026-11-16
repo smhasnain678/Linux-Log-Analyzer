@@ -25,6 +25,7 @@ LOG_FILE="logs/sample_auth.log"
 LOG_FILE_SET=0
 REPORT_FILE=""
 
+
 # Argument parsing
 while [ "$#" -gt 0 ]; do
 	case "$1" in
@@ -32,13 +33,14 @@ while [ "$#" -gt 0 ]; do
 			echo "Linux Log Analyzer and Security Monitor"
 			echo
 			echo "Usage:"
-			echo " ./log_analyzer.sh [LOG_FILE] [--threshold NUMBER]"
+			echo " ./log_analyzer.sh [LOG_FILE] [--threshold NUMBER] [--report PATH]"
 			echo 
 			echo "Examples:"
 			echo " ./log_analyzer.sh"
 			echo " ./log_analyzer.sh logs/sample_auth.log"
 			echo " ./log_analyzer.sh logs/sample_auth.log --threshold 5"
 			echo " ./log_analyzer.sh --threshold 3 logs/sample_auth.log"
+			echo " ./log_analyzer.sh --report reports/custom_report.txt"
 			exit 0
 			;;
 		--report)
@@ -85,7 +87,7 @@ done
 #LOG_FILE="/var/log/auth.log"
 #LOG_FILE="${1:-logs/sample_auth.log}"
 if [ -z "$REPORT_FILE" ]; then
-	REPORT_FILE="reports/log_report_$(date +%Y-%m-%d_%H_%M_%S).txt"
+	REPORT_FILE="reports/log_report_$(date +%Y-%m-%d_%H-%M-%S).txt"
 fi
 
 mkdir -p "$(dirname "$REPORT_FILE")"
