@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Create report directory if it does not exit
-mkdir -p reports
+#mkdir -p reports
 
 # Report File
-REPORT_FILE="reports/log_report_$(date +%Y-%m-%d_%H-%M-%S).txt"
+#REPORT_FILE="reports/log_report_$(date +%Y-%m-%d_%H-%M-%S).txt"
 
 # Save output to terminal and report file
-exec > >(tee -a "$REPORT_FILE") 2>&1
+#exec > >(tee -a "$REPORT_FILE") 2>&1
 
 echo "==============================="
 echo " LINUX LOG ANALYZER AND SECURITY MONITOR"
@@ -23,6 +23,7 @@ echo "======================================================"
 THRESHOLD=2
 LOG_FILE="logs/sample_auth.log"
 LOG_FILE_SET=0
+REPORT_FILE=""
 
 # Argument parsing
 while [ "$#" -gt 0 ]; do
@@ -39,6 +40,15 @@ while [ "$#" -gt 0 ]; do
 			echo " ./log_analyzer.sh logs/sample_auth.log --threshold 5"
 			echo " ./log_analyzer.sh --threshold 3 logs/sample_auth.log"
 			exit 0
+			;;
+		--report)
+			if [ "$#" -lt 2 ] || [ -z "$2" ]; then
+				echo "ERROR: Report file path is required"
+				exit 1
+			fi
+
+			REPORT_FILE="$2"
+			shift 2
 			;;
 		--threshold)
 			if [ "$#" -lt 2 ] || [ -z "$2" ]; then
@@ -74,6 +84,15 @@ done
 # Log Files
 #LOG_FILE="/var/log/auth.log"
 #LOG_FILE="${1:-logs/sample_auth.log}"
+if [ -z "$REPORT_FILE" ]; then
+	REPORT_FILE="reports/log_report_$(date +%Y-%m-%d_%H_%M_%S).txt"
+fi
+
+mkdir -p "$(dirname "$REPORT_FILE")"
+
+exec > >(tee -a "$REPORT_FILE") 2>&1
+
+echo "Report File: $REPORT_FILE"
 
 echo "Analyzing Log Files: $LOG_FILE"
 
