@@ -110,6 +110,10 @@ if ! touch "$REPORT_FILE"; then
 	exit 1
 fi
 
+# Save output to terminal and report file
+exec > >(tee -a "$REPORT_FILE") 2&>1
+echo "Report File: $REPORT_FILE"
+
 
 mkdir -p "$(dirname "$REPORT_FILE")"
 
