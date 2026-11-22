@@ -86,9 +86,18 @@ done
 # Log Files
 #LOG_FILE="/var/log/auth.log"
 #LOG_FILE="${1:-logs/sample_auth.log}"
+
+# Set default report file if custom path is not provided
 if [ -z "$REPORT_FILE" ]; then
 	REPORT_FILE="reports/log_report_$(date +%Y-%m-%d_%H-%M-%S).txt"
 fi
+
+# Check if report path is a directory
+if [ -d "$REPORT_FILE" ]; then
+	echo "ERROR: Report path points to a directory."
+	exit 1
+fi
+
 
 mkdir -p "$(dirname "$REPORT_FILE")"
 
