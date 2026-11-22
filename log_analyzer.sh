@@ -98,6 +98,18 @@ if [ -d "$REPORT_FILE" ]; then
 	exit 1
 fi
 
+# Create parent directory
+if ! mkdir -p "$(dirname "$REPORT_FILE")"; then
+	echo "ERROR: Could not create report directory"
+	exit 1
+fi
+
+# Check whether report file can be created or written
+if ! touch "$REPORT_FILE"; then
+	echo "ERROR: Cannot create or write to report file: $REPORT_FILE"
+	exit 1
+fi
+
 
 mkdir -p "$(dirname "$REPORT_FILE")"
 
